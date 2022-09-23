@@ -1,10 +1,10 @@
-import Api.UserApi;
-import DataForTests.Browsers;
-import DataForTests.Constants;
-import DataForTests.URLs;
-import DataForTests.User;
-import PageObject.RegistrationPage;
-import PageObject.StellarBurgersPage;
+import api.UserApi;
+import data_for_tests.Browsers;
+import data_for_tests.Constants;
+import data_for_tests.URLs;
+import data_for_tests.User;
+import page_object.RegistrationPage;
+import page_object.StellarBurgersPage;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;
@@ -58,7 +58,7 @@ public class RegistrationWithParametersTest extends BrowserTest{
         this.shouldFail = shouldFail;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters (name = "Тестовые данные: {0} {1}")
     public static Object[][] getPasswords() {
         return new Object[][] {
                 {"12345", true},

@@ -1,11 +1,11 @@
-import Api.UserApi;
-import DataForTests.Browsers;
-import DataForTests.URLs;
-import DataForTests.User;
-import PageObject.HomePage;
-import PageObject.LoginPage;
-import PageObject.RegistrationPage;
-import PageObject.ResetPasswordPage;
+import api.UserApi;
+import data_for_tests.Browsers;
+import data_for_tests.URLs;
+import data_for_tests.User;
+import page_object.HomePage;
+import page_object.LoginPage;
+import page_object.RegistrationPage;
+import page_object.ResetPasswordPage;
 import io.restassured.RestAssured;
 import org.junit.After;
 import org.junit.Before;
@@ -41,7 +41,7 @@ public class EntryTest extends BrowserTest {
     }
 
     private void assertUrlLoginPage() {
-        loginPage.waitElementClickable(loginPage.entryBtn);
+        loginPage.waitElementClickable(loginPage.getEmailInput());
 
         assertEquals(driver.getCurrentUrl(), URLs.LOGIN_PAGE);
     }
@@ -49,7 +49,7 @@ public class EntryTest extends BrowserTest {
     private void assertUrlRedirectedToHomePage() throws InterruptedException {
         loginPage.loginUser(email, password);
         Thread.sleep(500);
-        homePage.waitElementClickable(homePage.makeOrderBtn);
+        homePage.waitElementClickable(homePage.getMakeOrderBtn());
 
         assertEquals(driver.getCurrentUrl(), URLs.HOME_PAGE);
     }
@@ -68,7 +68,7 @@ public class EntryTest extends BrowserTest {
     public void entryPersonalAccountTest() throws InterruptedException {
         this.driver.get(URLs.HOME_PAGE);
         Thread.sleep(500);
-        homePage.waitElementClickable(homePage.personalAccountBtn);
+        homePage.waitElementClickable(homePage.getPersonalAccountBtn());
         this.homePage.clickPersonalAccountBtn();
 
         this.assertUrlLoginPage();

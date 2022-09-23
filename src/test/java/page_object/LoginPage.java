@@ -1,4 +1,4 @@
-package PageObject;
+package page_object;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,12 +8,16 @@ public class LoginPage extends StellarBurgersPage {
         super(driver);
     }
 
-    public By registrationLink = By.xpath(".//main/div/div/p[1]/a");
-    public By emailInput = By.xpath(".//main/div/form/fieldset[1]/div/div/input");
-    public By passwordInput = By.xpath(".//main/div/form/fieldset[2]/div/div/input");
-    public By entryBtn = By.xpath(".//main/div/form/button");
-    public By resetPasswordLink = By.xpath("/html/body/div/div/main/div/div/p[2]/a");
-    public By personalAccountBtn = By.xpath("/html/body/div/div/header/nav/a/p");
+    private By registrationLink = By.xpath("//*[.='Зарегистрироваться']");
+
+    private By emailInput = By.name("name");
+
+    private By passwordInput =  By.name("Пароль");
+
+    private By entryBtn = By.xpath("//*[.='Войти']");
+
+    private By resetPasswordLink = By.xpath("//*[.='Восстановить пароль']");
+    private By personalAccountBtn = By.xpath("//*[.='Личный Кабинет']");
 
 
     public LoginPage fillEntryForm(String email, String password) {
@@ -39,5 +43,30 @@ public class LoginPage extends StellarBurgersPage {
 
     public void loginUser(String email, String password) {
         this.fillEntryForm(email, password).clickEntryBtn();
+    }
+
+
+    public By getRegistrationLink() {
+        return registrationLink;
+    }
+
+    public By getEmailInput() {
+        return emailInput;
+    }
+
+    public By getPasswordInput() {
+        return passwordInput;
+    }
+
+    public By getEntryBtn() {
+        return entryBtn;
+    }
+
+    public By getResetPasswordLink() {
+        return resetPasswordLink;
+    }
+
+    public By getPersonalAccountBtn() {
+        return personalAccountBtn;
     }
 }

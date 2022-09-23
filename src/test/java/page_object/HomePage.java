@@ -1,24 +1,21 @@
-package PageObject;
+package page_object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class HomePage extends StellarBurgersPage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public By entryBtn = By.xpath("/html/body/div/div/main/section[2]/div/button");
-    public By personalAccountBtn = By.xpath(".//header/nav/a/p");
-
-    public By makeOrderBtn = By.xpath("html/body/div/div/main/section[2]/div/button");
-    public By bunsBtn = By.xpath("/html/body/div/div/main/section[1]/div[1]/div[1]");
-    public By sausesBtn = By.xpath("/html/body/div/div/main/section[1]/div[1]/div[2]");
-    public By ingredsBtn = By.xpath("/html/body/div/div/main/section[1]/div[1]/div[3]");
+    private By entryBtn = By.xpath("//*[.='Войти в аккаунт']");
+    private By personalAccountBtn = By.xpath("//*[.='Личный Кабинет']");
+    private By makeOrderBtn = By.xpath("//*[.='Оформить заказ']");
+    private By bunsBtn = By.xpath("//*[.='Булки']");
+    private By sausesBtn = By.xpath("//*[.='Соусы']");
+    private By ingredsBtn = By.xpath("//*[.='Начинки']");
 
 
     public void clickEntryBtn() {
@@ -50,4 +47,28 @@ public class HomePage extends StellarBurgersPage {
          categories.add(getIngeds());
          return categories;
     }
+
+    public By getEntryBtn() {
+        return entryBtn;
+    }
+
+    public By getPersonalAccountBtn() {
+        return personalAccountBtn;
+    }
+
+    public By getMakeOrderBtn() {
+        return makeOrderBtn;
+    }
+
+    public By getBunsBtn() {
+        return bunsBtn;
+    }
+
+    public By getSausesBtn() {
+        return sausesBtn;
+    }
+    public By getIngredsBtn() {
+        return ingredsBtn;
+    }
+
 }

@@ -1,10 +1,11 @@
-import Api.UserApi;
-import DataForTests.Browsers;
-import DataForTests.URLs;
-import DataForTests.User;
-import PageObject.AccountPage;
-import PageObject.HomePage;
-import PageObject.LoginPage;
+import api.UserApi;
+import data_for_tests.Browsers;
+import data_for_tests.URLs;
+import data_for_tests.User;
+import io.restassured.response.Response;
+import page_object.AccountPage;
+import page_object.HomePage;
+import page_object.LoginPage;
 import io.restassured.RestAssured;
 import org.junit.*;
 
@@ -22,7 +23,7 @@ public class PersonalAccountTest extends BrowserTest{
 
     @Before
     public void setUp() throws InterruptedException {
-        this.setUpDriver(Browsers.CHROME);
+        this.setUpDriver(Browsers.FIREFOX);
         RestAssured.baseURI = URLs.HOME_PAGE;
 
         this.homePage = new HomePage(this.driver);
@@ -44,53 +45,45 @@ public class PersonalAccountTest extends BrowserTest{
     public void makeLoggedInUser() throws InterruptedException {
         this.driver.get(URLs.HOME_PAGE);
         Thread.sleep(500);
-        homePage.waitElementClickable(homePage.personalAccountBtn);
+        homePage.waitElementClickable(homePage.getPersonalAccountBtn());
         homePage.clickPersonalAccountBtn();
 
         this.loginPage.loginUser(email, password);
         Thread.sleep(500);
-        homePage.waitElementClickable(homePage.personalAccountBtn);
+        homePage.waitElementClickable(homePage.getPersonalAccountBtn());
         homePage.clickPersonalAccountBtn();
     }
 
     @Test
     public void clickPersonalAccountBtnTest() throws InterruptedException {
         Thread.sleep(500);
-        accountPage.waitElementClickable(accountPage.saveBtn);
+        accountPage.waitElementClickable(accountPage.getSaveBtn());
 
-        assertEquals(driver.getCurrentUrl(), URLs.ACCOUNT_PAGE);
+        assertEquals(URLs.ACCOUNT_PAGE, driver.getCurrentUrl());
     }
 
     @Test
-    public void clickConstructorAndLogoFromPersonalAccountTest() throws InterruptedException {
+    public void clickConstructorFromPersonalAccountTest() {
         accountPage.clickConstructorBtn();
-        assertEquals(driver.getCurrentUrl(), URLs.HOME_PAGE);
+        assertEquals(URLs.HOME_PAGE, driver.getCurrentUrl());
+    }
 
-        homePage.waitElementClickable(homePage.personalAccountBtn);
-        homePage.clickPersonalAccountBtn();
-
-        Thread.sleep(1000);
-        accountPage.waitElementClickable(accountPage.logoBtn);
+    @Test
+    public void clickLogoFromPersonalAccountTest() {
+        accountPage.waitElementClickable(accountPage.getLogoBtn());
         accountPage.clickLogoBtn();
 
-        assertEquals(driver.getCurrentUrl(), URLs.HOME_PAGE);
+        assertEquals(URLs.HOME_PAGE, driver.getCurrentUrl());
     }
 
     @Test
     public void logoutTest() throws InterruptedException {
         Thread.sleep(1000);
 
-        accountPage.waitElementClickable(accountPage.exitBtn);
+        accountPage.waitElementClickable(accountPage.getExitBtn());
         accountPage.clickExitBtn();
+        loginPage.waitElementClickable(loginPage.getEmailInput());
 
-        loginPage.waitElementClickable(loginPage.entryBtn);
-
-        assertEquals(driver.getCurrentUrl(), URLs.LOGIN_PAGE);
-
-        Thread.sleep(500);
-        loginPage.waitElementClickable(loginPage.personalAccountBtn);
-        loginPage.clickAccountBtn();
-
-        assertEquals(driver.getCurrentUrl(), URLs.LOGIN_PAGE);
+        assertEquals(URLs.LOGIN_PAGE, driver.getCurrentUrl());
     }
 }

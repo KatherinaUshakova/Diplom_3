@@ -1,4 +1,4 @@
-package DataForTests;
+package data_for_tests;
 
 public class URLs {
     public static final String HOME_PAGE = "https://stellarburgers.nomoreparties.site/";

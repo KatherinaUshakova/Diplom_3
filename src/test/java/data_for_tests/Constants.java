@@ -1,4 +1,4 @@
-package DataForTests;
+package data_for_tests;
 
 public class Constants {
     public static final String WRONG_PASSWORD_MESSAGE = "Некорректный пароль";

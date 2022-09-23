@@ -1,4 +1,4 @@
-package Api;
+package api;
 
 import io.restassured.response.Response;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class UserApi {
     }
 
     public Response loginUserSuccessfully() {
-        return loginUser(DataForTests.User.EMAIL, DataForTests.User.PASSWORD);
+        return loginUser(data_for_tests.User.EMAIL, data_for_tests.User.PASSWORD);
     }
 
     public void saveAccessToken(Response response) {
