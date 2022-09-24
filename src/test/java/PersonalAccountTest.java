@@ -1,11 +1,10 @@
 import api.UserApi;
-import data_for_tests.Browsers;
-import data_for_tests.URLs;
-import data_for_tests.User;
-import io.restassured.response.Response;
-import page_object.AccountPage;
-import page_object.HomePage;
-import page_object.LoginPage;
+import datafortests.Browsers;
+import datafortests.URLs;
+import datafortests.User;
+import pageobject.AccountPage;
+import pageobject.HomePage;
+import pageobject.LoginPage;
 import io.restassured.RestAssured;
 import org.junit.*;
 
@@ -23,7 +22,7 @@ public class PersonalAccountTest extends BrowserTest{
 
     @Before
     public void setUp() throws InterruptedException {
-        this.setUpDriver(Browsers.FIREFOX);
+        this.setUpDriver(Browsers.CHROME);
         RestAssured.baseURI = URLs.HOME_PAGE;
 
         this.homePage = new HomePage(this.driver);

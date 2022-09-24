@@ -1,8 +1,8 @@
-import data_for_tests.Browsers;
-import data_for_tests.Constants;
-import data_for_tests.URLs;
-import page_object.HomePage;
-import page_object.StellarBurgersPage;
+import datafortests.Browsers;
+import datafortests.Constants;
+import datafortests.URLs;
+import pageobject.HomePage;
+import pageobject.StellarBurgersPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

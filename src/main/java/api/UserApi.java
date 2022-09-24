@@ -21,7 +21,7 @@ public class UserApi {
     }
 
     public Response loginUserSuccessfully() {
-        return loginUser(data_for_tests.User.EMAIL, data_for_tests.User.PASSWORD);
+        return loginUser(datafortests.User.EMAIL, datafortests.User.PASSWORD);
     }
 
     public void saveAccessToken(Response response) {

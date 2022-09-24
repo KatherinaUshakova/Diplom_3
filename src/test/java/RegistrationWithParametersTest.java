@@ -1,10 +1,10 @@
 import api.UserApi;
-import data_for_tests.Browsers;
-import data_for_tests.Constants;
-import data_for_tests.URLs;
-import data_for_tests.User;
-import page_object.RegistrationPage;
-import page_object.StellarBurgersPage;
+import datafortests.Browsers;
+import datafortests.Constants;
+import datafortests.URLs;
+import datafortests.User;
+import pageobject.RegistrationPage;
+import pageobject.StellarBurgersPage;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;

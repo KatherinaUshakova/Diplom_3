@@ -1,4 +1,4 @@
-package data_for_tests;
+package datafortests;
 
 public enum Browsers {
     CHROME,
